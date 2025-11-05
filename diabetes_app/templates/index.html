@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diabetes Prediction</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #4b006e, #7a2cb8);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      margin: 0;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      padding: 40px;
+      width: 400px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #e6d7f7;
+    }
+
+    input[type="number"] {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      background-color: #e9d4ff;
+      color: #3e006e;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input[type="submit"] {
+      background-color: #b46cff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #9b4dff;
+      transform: scale(1.05);
+    }
+
+    .result-box {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 12px;
+      background: #dcb3ff;
+      color: #32004b;
+      font-weight: 600;
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Hey Patient 👋</h1>
+    <p>Let’s find out if you have diabetes or not.</p>
+
+    <form action="{{ url_for('predict') }}" method="post">
+      <input type="number" step="any" name="Pregnancies" placeholder="Pregnancies" required>
+      <input type="number" step="any" name="Glucose" placeholder="Glucose" required>
+      <input type="number" step="any" name="BloodPressure" placeholder="Blood Pressure" required>
+      <input type="number" step="any" name="SkinThickness" placeholder="Skin Thickness" required>
+      <input type="number" step="any" name="Insulin" placeholder="Insulin" required>
+      <input type="number" step="any" name="BMI" placeholder="BMI" required>
+      <input type="number" step="any" name="DiabetesPedigreeFunction" placeholder="Diabetes Pedigree Function" required>
+      <input type="number" step="any" name="Age" placeholder="Age" required>
+
+      <input type="submit" value="Check Result">
+    </form>
+
+    {% if result %}
+      <div class="result-box" style="display:block;">
+        {{ result }}
+      </div>
+    {% endif %}
+  </div>
+
+</body>
+</html>
