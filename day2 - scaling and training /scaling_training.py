@@ -10,8 +10,8 @@ from sklearn.metrics import roc_curve
 train_df = pd.read_csv("diabetes_cleaned_test.csv")
 test_df = pd.read_csv("diabetes_cleaned_train.csv")
 
-print("Train shape:", train_df.shape)
-print("Test shape:", test_df.shape)
+# print("Train shape:", train_df.shape)
+# print("Test shape:", test_df.shape)
 
 # Features and labels
 X_train = train_df.drop("Outcome", axis=1)
